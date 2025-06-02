@@ -8,6 +8,6 @@ Scores are evaluated on Root-Mean-Squared-Error (RMSE) between the logarithm of 
 
 Actual score(RMSE): 12869.95219
 
-Currently rank: 51
+Current rank: 51
 
 ![Screenshot from 2025-06-02 11-12-21](https://github.com/user-attachments/assets/a3f3b0bf-9c0b-4104-bff8-831762a5591e)
