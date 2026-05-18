@@ -1,0 +1,20 @@
+ridge_params:
+  random_state: 12
+
+lasso_params:
+  random_state: 12
+
+gbr_params:
+  random_state: 12
+
+lgbm_params:
+  random_state: 12
+  verbose: -1
+
+xgb_params:
+  random_state: 12
+
+catboost_params:
+  allow_writing_files: False
+  random_state: 12
+  verbose: 0

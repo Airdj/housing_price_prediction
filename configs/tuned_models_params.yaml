@@ -1,0 +1,40 @@
+ridge_params:
+  params:
+    alpha: 17.87256091939255
+    max_iter: 66325
+  score: -0.11959478721654775
+lasso_params:
+  params:
+    alpha: 0.0009129750272490222
+    max_iter: 97841
+  score: -0.12039053351070109
+linear_params:
+  params: {}
+  score: -0.14046769618919322
+gbr_params:
+  params:
+    n_estimators: 1997
+    learning_rate: 0.008768707534515911
+    max_depth: 3
+    min_samples_split: 22
+    max_features: 37
+  score: -0.12263138602091646
+lgbm_params:
+  params:
+    num_leaves: 201
+    max_depth: 2
+    learning_rate: 0.0322134897940049
+    n_estimators: 1160
+  score: -0.12624976224838794
+xgb_params:
+  params:
+    n_estimators: 561
+    learning_rate: 0.06868004042109288
+    max_depth: 4
+  score: -0.12687941377170026
+catboost_params:
+  params:
+    iterations: 2087
+    learning_rate: 0.01768451792822471
+    depth: 5
+  score: -0.11973453411369414
