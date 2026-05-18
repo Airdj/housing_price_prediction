@@ -5,8 +5,98 @@
 - Problem: Real estate price prediction
 - Model: Stacking Ensemble (Ridge, Lasso, Linear Regression, Gradient Boosting, XGBoost, LightGBM, CatBoost)
 - Metric: RMSE (log scale)
-- Best score: 12,869
+- Best Validation RMSE: 12,869
 - Dataset: Kaggle Housing
+
+## Features
+- Advanced feature engineering
+- Hyperparameter tuning with Optuna
+- Stacking ensemble
+- FastAPI + Gradio deployment
+- Docker support
+- MLflow experiment tracking
+- Automated inference pipeline
+
+## Tech Stack
+- Python
+- Scikit-learn
+- XGBoost
+- LightGBM
+- CatBoost
+- FastAPI
+- Gradio
+- Docker
+- MLflow
+
+# Project structure
+
+The project follows a modular structure:
+- `configs/` – configuration files
+- `data/` – raw and processed datasets
+- `features/` – feature engineering
+- `notebooks/` – EDA
+- `app/` – gradio + FastAPI
+- `models/` – model definitions, training, tuning, evaluating
+
+```bash
+├── configs
+│   ├── base_models_params.yaml
+│   └── tuned_models_params.yaml
+├── data
+│   ├── processed
+│   │   ├── processed_final_eval_df.csv
+│   │   ├── processed_final_inference_df.csv
+│   │   ├── processed_final_test_df.csv
+│   │   ├── processed_final_train_df.csv
+│   │   ├── processed_target_eval_feature.csv
+│   │   └── processed_target_train_feature.csv
+│   └── raw
+│       ├── data_description.txt
+│       ├── sample_submission.csv
+│       ├── test.csv
+│       └── train.csv
+├── notebooks
+│   └── EDA_housing_price_prediction.ipynb
+├── src
+│   ├── app
+│   │   ├── app.py
+│   │   └── main.py
+│   ├── data
+│   │   ├── load_data.py
+│   │   └── preprocess_data.py
+│   ├── features
+│   │   └── build_features.py
+│   ├── models
+│   │   ├── evaluate.py
+│   │   ├── model_factory.py
+│   │   ├── stack.py
+│   │   ├── train.py
+│   │   └── tune.py
+│   ├── pipelines
+│   │   ├── inference_pipeline.py
+│   │   └── train_pipeline.py
+│   ├── serving
+│   │   ├── best_model_stacked.pkl
+│   │   └── inference.py
+│   ├── utils
+│   │   ├── build_features_pipeline_artifacts.pkl
+│   │   ├── columns.csv
+│   │   ├── fastapi_test_record_json.json
+│   │   ├── helpers.py
+│   │   ├── preprocess_pipeline_artifacts.pkl
+│   │   └── validate_data.py
+│   └── __init__.py
+├── tests
+│   ├── test_fastapi.py
+│   └── test_inference.py
+├── docker-compose.yml
+├── Dockerfile.api
+├── Dockerfile.ui
+├── docker_requirements.txt
+├── mlflow.db
+├── README.md
+└── requirements.txt
+```
 
 ## Define the problem and analyze it from a broader perspective
 
@@ -65,8 +155,7 @@ Yes, there are many comparable problems that can provide valuable experience and
 
 #### Tools:
 
-* **Scikit-learn:** A tool for building classic ML models such as linear regression, XGBoost, and Random Forest.
-
+* **Scikit-learn:** preprocessing, pipelines, model evaluation, and classical ML models.
 
 ### 9. How can the problem be solved manually?
 Solving the real estate price prediction problem manually would require an approach based on manually collecting and analyzing data, drawing conclusions from experience, and making decisions intuitively.
@@ -195,75 +284,7 @@ docker compose up --build
 fastapi: 0.0.0.0/8000
 gradio: 0.0.0.0/7860
 ```
-# Code structure
 
-The project follows a modular structure:
-- `configs/` – configuration files
-- `data/` – raw and processed datasets
-- `features/` – feature engineering
-- `notebooks/` – EDA
-- `app/` – gradio + FastAPI
-- `models/` – model definitions, training, tuning, evaluating
-
-```bash
-├── configs
-│   ├── base_models_params.yaml
-│   └── tuned_models_params.yaml
-├── data
-│   ├── processed
-│   │   ├── processed_final_eval_df.csv
-│   │   ├── processed_final_inference_df.csv
-│   │   ├── processed_final_test_df.csv
-│   │   ├── processed_final_train_df.csv
-│   │   ├── processed_target_eval_feature.csv
-│   │   └── processed_target_train_feature.csv
-│   └── raw
-│       ├── data_description.txt
-│       ├── sample_submission.csv
-│       ├── test.csv
-│       └── train.csv
-├── notebooks
-│   └── EDA_housing_price_prediction.ipynb
-├── src
-│   ├── app
-│   │   ├── app.py
-│   │   └── main.py
-│   ├── data
-│   │   ├── load_data.py
-│   │   └── preprocess_data.py
-│   ├── features
-│   │   └── build_features.py
-│   ├── models
-│   │   ├── evaluate.py
-│   │   ├── model_factory.py
-│   │   ├── stack.py
-│   │   ├── train.py
-│   │   └── tune.py
-│   ├── pipelines
-│   │   ├── inference_pipeline.py
-│   │   └── train_pipeline.py
-│   ├── serving
-│   │   ├── best_model_stacked.pkl
-│   │   └── inference.py
-│   ├── utils
-│   │   ├── build_features_pipeline_artifacts.pkl
-│   │   ├── columns.csv
-│   │   ├── fastapi_test_record_json.json
-│   │   ├── helpers.py
-│   │   ├── preprocess_pipeline_artifacts.pkl
-│   │   └── validate_data.py
-│   └── __init__.py
-├── tests
-│   ├── test_fastapi.py
-│   └── test_inference.py
-├── docker-compose.yml
-├── Dockerfile.api
-├── Dockerfile.ui
-├── docker_requirements.txt
-├── mlflow.db
-├── README.md
-└── requirements.txt
-```
 
 ## Notebook
 
@@ -303,7 +324,7 @@ Lack of statistical significance, High proportion of missing values)
 # Results and evaluation
 Scores are evaluated on Root-Mean-Squared-Error (RMSE) between the logarithm of the predicted value and the logarithm of the observed sales price.
 
-Actual best score (RMSE): 12869.95219
+Best Validation RMSE: 12869.95219
 
 ### Validation
 - Train/test split
@@ -312,5 +333,5 @@ Actual best score (RMSE): 12869.95219
 
 # Future work
 - Monitoring model performance over time
-- Make few fixes with data validation
-- Upgrade UI
+- Improve data validation pipeline
+- Enhance UI/UX
