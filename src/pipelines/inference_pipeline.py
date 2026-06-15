@@ -15,17 +15,17 @@ columns = pd.read_csv(cols_path, header=None)[0].tolist()
 
 def inference_pipeline(df_inference):
     validation_result, failed_expectations = validate_housing_data(df_inference, columns)
-    if failed_expectations is None:
+    if failed_expectations:
         print('failed data entrance')
-        return None
-    else:
-        # inference data(preprocess)
-        df_inference = preprocess_data(inference=True, df_inference=df_inference)
 
-        # inference data(build features)
-        final_inference_df = build_features(inference=True, df_inference=df_inference)
 
-        prediction = model_service.predict(final_inference_df)
-        prediction = np.expm1(prediction)
-        return prediction.tolist()
+    # inference data(preprocess)
+    df_inference = preprocess_data(inference=True, df_inference=df_inference)
+
+    # inference data(build features)
+    final_inference_df = build_features(inference=True, df_inference=df_inference)
+
+    prediction = model_service.predict(final_inference_df)
+    prediction = np.expm1(prediction)
+    return prediction.tolist()
 

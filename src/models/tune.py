@@ -101,6 +101,7 @@ def run_optimization_mlflow(model_name, X, y, n_trials=50):
     with mlflow.start_run(run_name=model_name):
         best_model = model_class(**study.best_params)
         best_score = evaluate_model(best_model, X, y)
+        best_model.fit(X, y)
         mlflow.log_params(study.best_params)
         mlflow.log_metric('neg_RMSE_best', best_score)
         mlflow.sklearn.log_model(best_model, name='model')

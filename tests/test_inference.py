@@ -12,19 +12,20 @@ if __name__ == '__main__':
     columns = list(df_test.columns)
     # inference data(validation)
     validation_result, failed_expectations = validate_housing_data(df_inference, columns)
-    if failed_expectations is not None:
+    if failed_expectations:
         print('failed data entrance')
     else:
         # inference data(preprocess)
         df_inference = preprocess_data(inference=True, df_inference=df_inference)
-
+        print(df_inference.columns)
         # inference data(build features)
         final_inference_df = build_features(inference=True, df_inference=df_inference)
-
+        print(final_inference_df.columns)
         final_inference_df.to_csv('data/processed/processed_final_inference_df.csv', index=False)
 
         # load model
         final_model_path = 'src/serving/best_model_stacked.pkl'
         final_model = ModelService(final_model_path)
+        final_inference_df = final_inference_df.drop(columns=['Id'], axis=1)
         prediction = final_model.predict(final_inference_df)
         print(prediction)

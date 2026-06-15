@@ -25,7 +25,7 @@ if __name__ == '__main__':
     X_train = pd.read_csv('data/processed/processed_final_train_df.csv')
     y_train = pd.read_csv('data/processed/processed_target_train_feature.csv')
 
-    stacked_model = train_final_model(X_train, y_train, tmp)
+    stacked_model = train_final_model(X_train.drop('Id', axis=1), y_train, tmp)
     print('done')
 
 

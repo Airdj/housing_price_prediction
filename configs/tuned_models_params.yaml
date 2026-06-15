@@ -1,40 +1,40 @@
 ridge_params:
   params:
-    alpha: 17.87256091939255
-    max_iter: 66325
-  score: -0.11959478721654775
+    alpha: 17.021906672245198
+    max_iter: 166406
+  score: -0.11959415036654848
 lasso_params:
   params:
-    alpha: 0.0009129750272490222
-    max_iter: 97841
-  score: -0.12039053351070109
+    alpha: 0.000930906284831817
+    max_iter: 127888
+  score: -0.12040095409206328
 linear_params:
   params: {}
   score: -0.14046769618919322
 gbr_params:
   params:
-    n_estimators: 1997
-    learning_rate: 0.008768707534515911
+    n_estimators: 1966
+    learning_rate: 0.05442845482075123
     max_depth: 3
-    min_samples_split: 22
-    max_features: 37
-  score: -0.12263138602091646
+    min_samples_split: 12
+    max_features: 6
+  score: -0.12242645637897112
 lgbm_params:
   params:
-    num_leaves: 201
-    max_depth: 2
-    learning_rate: 0.0322134897940049
-    n_estimators: 1160
-  score: -0.12624976224838794
+    num_leaves: 194
+    max_depth: 3
+    learning_rate: 0.1532631304680911
+    n_estimators: 345
+  score: -0.1289504065662007
 xgb_params:
   params:
-    n_estimators: 561
-    learning_rate: 0.06868004042109288
-    max_depth: 4
-  score: -0.12687941377170026
+    n_estimators: 667
+    learning_rate: 0.07082077583708288
+    max_depth: 2
+  score: -0.1264059239811058
 catboost_params:
   params:
-    iterations: 2087
-    learning_rate: 0.01768451792822471
-    depth: 5
-  score: -0.11973453411369414
+    iterations: 3970
+    learning_rate: 0.010048349142628085
+    depth: 6
+  score: -0.12100071563748194

@@ -12,7 +12,7 @@ from sklearn.model_selection import cross_val_score, KFold, RepeatedKFold, Shuff
 
 def basic_models(df_results, datasetname, models, cv_method, features_train, target_train):
     scoring = 'neg_mean_squared_error'
-    cv = 2
+    cv = 5
     df_final = df_results.copy()
 
     for key, model in models.items():
