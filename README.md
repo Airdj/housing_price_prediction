@@ -4,7 +4,7 @@
 
 - Problem: Real estate price prediction
 - Model: Stacking Ensemble (Ridge, Lasso, Linear Regression, Gradient Boosting, XGBoost, LightGBM, CatBoost)
-- Metric: RMSE (log scale)
+- Metric: RMSE
 - Best Validation RMSE: 12,869
 - Dataset: Kaggle Housing
 
@@ -272,7 +272,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 sudo apt install docker.io
 sudo systemctl enable --now docker
-sudo usermode -aG docker $USER
+sudo usermod -aG docker $USER
 ```
 
 ### 5. Run the container
